@@ -25,8 +25,13 @@ app.get("/patient", function(req, res){
     res.render("page-one");
   });
   app.get("/page2", function(req, res){
-    res.render("page-two");
   });
+  app.get('/here', function (req, res) {
+  res.render('signup')
+})
+app.get('/pay', function (req, res) {
+  res.render('payment')
+})
   // Handle the appointment form submission
 app.post('/medication1', function (req, res) {
   var formBody = {
