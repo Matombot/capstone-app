@@ -27,6 +27,27 @@ app.get("/patient", function(req, res){
   app.get("/page2", function(req, res){
     res.render("page-two");
   });
+  // Handle the appointment form submission
+app.post('/medication1', function (req, res) {
+  var formBody = {
+    'name': req.body.first,
+    'surname': req.body.last,
+    'ID': req.body.id,
+    'email': req.body.email,
+    'contact': req.body.telNo,
+    'Reason': req.body.reason,
+    'time': req.body.time,
+    'date': req.body.date
+
+  };
+
+  console.log(formBody);
+
+  res.render('page-one', {
+    formBody,
+   
+  });
+});
   
 
 

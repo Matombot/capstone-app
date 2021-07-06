@@ -18,6 +18,105 @@
                 <option value="PEDIATRIC">PEDIATRIC</option>
                 <option value="DIAGNOSTICS">DIAGNOSTICS</option>
             </select>
+            <div class="names">
+                <div>
+                    <label>Name</label>
+                    <input type"text" name="first" placeholder="enter firstname" value="{{formBody.first}}">
+                </div>
+                <div>
+                    <label>Surname</label>
+                    <input type="text" name="last" placeholder="enter lastname" value="{{formBody.last}}">
+                </div>
+
+            </div>
+            <div>
+                <label>ID Number</label>
+                <input type="number" placeholder="Enter ID number" name="id" value="{{formBody.id}}">
+            </div>
+            <div>
+                <div>
+                    <label>Tel</label>
+                    <input type="tel" name="telNo" {{formBody.telNo}}>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" name="email" value="{{formBody.email}}">
+                </div>
+            </div>
+            <div>
+                First time visit?
+
+                <br>
+                <label>Yes</label>
+                <input type="radio" id="yes" name="yes" value="{{formBody.yes}}">
+                <br>
+
+                <label>No</label>
+                <input type="radio" id="no" name="no" value="{{formBody.no}}">
+
+
+            </div>
+
+            <div>
+                <label>Reason</label>
+                <textarea type="text" placeholder="reason for visit..." name="reason"
+                    value="{{formBody.reason}}"></textarea>
+                <br>
+                Select Schedule suitable for you.
+                <br>
+                <div>
+                    Select Symptoms
+                    <br>
+                    <label>Coughing</label>
+                    <input type="checkbox">
+                    <br>
+                    <label>Sneezing</label>
+                    <input type="checkbox">
+                    <br>
+                    <label>Sore Throat</label>
+                    <input type="checkbox">
+                    <br>
+                    <label>Headache</label>
+                    <input type="checkbox">
+                    <br>
+                    <label>Backache</label>
+                    <input type="checkbox">
+                    <br>
+                    <label>Muscle Pain</label>
+                    <input type="checkbox">
+                    <br>
+                    <label>Diarrhea</label>
+                    <input type="checkbox">
+                    <br>
+                </div>
+            </div>
+            
+               
+            
+            <div>
+                <h4>Allergies?</h4>
+                <label>Yes</label>
+                <input type="radio" name="" id="">
+                <br>
+                <label>No</label>
+                <input type="radio" name="" id="">
+                <h4>If yes</h4>
+                <label>Specify</label>
+                <input type="text">
+
+            </div>
+            <div>
+                <label>Select Time</label>
+                <input type="time" name="time" value="{{formBody.time}}">
+            </div>
+            <div>
+                <label>Select Date</label>
+                <input type="date" name="date" value="{{formBody.date}}">
+            </div>
+
+
+    </div>
+</div>
             <button class="SUBMIT APPOINTMENT" name="SUBMIT APPOINTMENT" type="submit">SUBMIT APPOINTMENT</button>
         </form>
         <div>
