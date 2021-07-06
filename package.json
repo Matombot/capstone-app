@@ -1,18 +1,31 @@
 {
   "name": "capstone-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "all the updates \r -",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bootstrap": "^5.0.2",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2",
-    "nodemon": "^2.0.9"
+    "express-session": "^1.17.2",
+    "nodemon": "^2.0.9",
+    "simple-grid-css": "^1.0.34",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matombot/capstone-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Matombot/capstone-app/issues"
+  },
+  "homepage": "https://github.com/Matombot/capstone-app#readme"
 }
