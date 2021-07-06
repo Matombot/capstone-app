@@ -1,0 +1,120 @@
+<div class="container">
+    <p class="nancy"> <img src="pictures/icon.jpeg" width="25"></p>
+    <p class="logout">LOGOUT</p>
+    <h1>GIPT-HEALTH* </h1>
+    <img src="pictures/logo.jpeg" width="100">
+    <h4>PLEASE FILL IN DETAILS!</h4>
+    <form action="/here" method="">
+        <div class="names">
+            <div>
+                <label>Name</label>
+                <input type"text" name="firstN" placeholder="enter firstname" value="{{formBody.firstN}}">
+            </div>
+            <div>
+                <label>Surname</label>
+                <input type="text" name="lastN" placeholder="enter lastname" value="{{formBody.lastN}}">
+            </div>
+
+        </div>
+        <div>
+            <label>ID Number</label>
+            <input type="text" placeholder="Enter ID number" name="ID" value="{{formBody.ID}}">
+        </div>
+        <div>
+            <div>
+                <label>Tel</label>
+                <input type="tel" name="telNo" {{formBody.telNo}}>
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="email" name="email" value="{{formBody.email}}" placeholder="enter email">
+            </div>
+        </div>
+        <div>
+            Address
+            <Address width="25%">
+                <input type="text" name="" placeholder="enter street number and name">
+                <br>
+                <input type="text" name="" placeholder="enter surburb">
+                <br>
+                <input>
+                <br>
+                <input type="number" name="" placeholder="enter postal code">
+            </Address>
+            <div>
+                <label for="">Add Medical insurance</label>
+                <br>
+                <input type="text" name="medical" placeholder="">
+            </div>
+        </div>
+        <div>
+            <div>
+                <h4>Select Symptoms</h4>
+
+                <label>Coughing</label>
+                <input type="checkbox">
+                <br>
+                <label>Sneezing</label>
+                <input type="checkbox">
+                <br>
+                <label>Sore Throat</label>
+                <input type="checkbox">
+                <br>
+                <label>Headache</label>
+                <input type="checkbox">
+                <br>
+                <label>Backache</label>
+                <input type="checkbox">
+                <br>
+                <label>Muscle Pain</label>
+                <input type="checkbox">
+                <br>
+                <label>Diarrhea</label>
+                <input type="checkbox">
+
+            </div>
+            <div>
+                <h4>Medical History</h4>
+
+                <label>Covid-19</label>
+                <input type="checkbox">
+                <br>
+                <label>Diabetes</label>
+                <input type="checkbox">
+                <br>
+                <label>High Blood</label>
+                <input type="checkbox">
+                <br>
+                <label>Cancer</label>
+                <input type="checkbox">
+                <br>
+                <label>Heart Desease</label>
+                <input type="checkbox">
+                <br>
+                <label>Asthma</label>
+                <input type="checkbox">
+                <br>
+                <label>Alzheimer's Disease</label>
+                <input type="checkbox">
+
+            </div>
+        </div>
+        <div>
+            <h4>Allergies?</h4>
+            <label>YES</label>
+                <input type="radio">
+                <br>
+                <label>NO</label>
+                <input type="radio">
+            <h4>If yes</h4>  
+            <label>Specify</label>
+            <input type="text">
+
+
+        </div>
+<br>
+        <div><button type="submit" name="btn">Save</button></div>
+
+    </form>
+
+</div>
