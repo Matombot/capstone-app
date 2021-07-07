@@ -57,15 +57,10 @@ app.get("/page", async function (req, res) {
   console.log(Patients);
   res.render('page-one')
 });
-<<<<<<< HEAD
-
-app.get("/page2", function (req, res) {
-=======
-app.get("/page2", async function (req, res) {
+app.get("/medication1", async function (req, res) {
   const get_meds = 'select * from medication_info';
   const MEDS = await db1.all(get_meds);
   console.log(MEDS);
->>>>>>> 59a7484834f790ac07f0d1784c2fa71ea84d310a
   res.render('page-two')
 });
 
@@ -78,10 +73,10 @@ app.get('/pay', function (req, res) {
 app.post("/medication1",async function (req, res) {
   const result = await db1.run(
     'INSERT INTO medication_info (medication_name) VALUES (?)',
-   console.log(req.body.selectMedication)
+   req.body.selectMedication
   )
-  res.render('page-two')
-  res.redirect("payment");
+  console.log(req.body.selectMedication)
+  res.redirect("/pay");
 });
 // Handle the appointment form submission
 app.post('/appointment', async function (req, res) {
