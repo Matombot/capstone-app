@@ -1,10 +1,10 @@
 let express = require('express');
-let app = express();
+const sqlite3 = require('sqlite3');
+const {open} = require('sqlite');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const sqlite3 = require('sqlite3');
 
-const { open } = require('sqlite');
+let app = express();
 let db;
 async function app2() {
 
@@ -43,6 +43,14 @@ app.get("/page", async function (req, res) {
   console.log(Patients);
   res.render('page-one')
 });
+// app.get("/page-one", async function (req, res) {
+//   const get_Patients = 'select * from patient_info';
+//   const Patients = await db.all(get_Patients);
+//   console.log(Patients);
+//   res.render('page-one', {
+//     Patients
+//   })
+//});
 app.get("/page2", function (req, res) {
   res.render('page-two')
 });
