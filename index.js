@@ -13,12 +13,18 @@ async function app2() {
     driver: sqlite3.Database
   });
   await db.migrate();
-  //const get_regNum = await db.all('select * from provinces');
-  //console.log('Registration numbers : ');
-  // console.log(get_regNum);
-
 }
 app2();
+let db1;
+async function app1() {
+
+  db1 = await open({
+    filename: 'Medications-info.db',
+    driver: sqlite3.Database
+  });
+  await db1.migrate();
+}
+app1();
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -43,15 +49,10 @@ app.get("/page", async function (req, res) {
   console.log(Patients);
   res.render('page-one')
 });
-// app.get("/page-one", async function (req, res) {
-//   const get_Patients = 'select * from patient_info';
-//   const Patients = await db.all(get_Patients);
-//   console.log(Patients);
-//   res.render('page-one', {
-//     Patients
-//   })
-//});
-app.get("/page2", function (req, res) {
+app.get("/page2", async function (req, res) {
+  const get_meds = 'select * from medication_info';
+  const MEDS = await db1.all(get_meds);
+  console.log(MEDS);
   res.render('page-two')
 });
 
@@ -61,8 +62,12 @@ app.get('/here', function (req, res) {
 app.get('/pay', function (req, res) {
   res.render('payment')
 })
-app.post("/medication1", function (req, res) {
-  res.render('payment')
+app.post("/medication1",async function (req, res) {
+  const result = await db1.run(
+    'INSERT INTO medication_info (medication_name) VALUES (?)',
+   console.log(req.body.selectMedication)
+  )
+  res.render('page-two')
   res.redirect("payment");
 });
 // Handle the appointment form submission
@@ -82,11 +87,11 @@ app.post('/appointment', async function (req, res) {
   //console.log(formBody);
   const result = await db.run(
     'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason) VALUES (?,?,?,?,?)',
-    console.log(req.body.id),
-    console.log(req.body.first),
-    console.log(req.body.last),
-    console.log(req.body.telNo),
-    console.log(req.body.reason)
+    req.body.id,
+    req.body.first,
+    req.body.last,
+    req.body.telNo,
+    req.body.reason
   )
 
   res.render('page-one', {
