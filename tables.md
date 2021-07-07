@@ -23,4 +23,4 @@ CREATE TABLE location(
     city text not null,
     surburb text,
     postal_code integer not null
-)
+);

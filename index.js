@@ -1,10 +1,26 @@
 let express = require('express');
 let app = express();
-const exphbs  = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const sqlite3 = require('sqlite3');
 
+const { open } = require('sqlite');
+let db;
+async function app2() {
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+  db = await open({
+    filename: 'Patient-info.db',
+    driver: sqlite3.Database
+  });
+  await db.migrate();
+  //const get_regNum = await db.all('select * from provinces');
+  //console.log('Registration numbers : ');
+  // console.log(get_regNum);
+
+}
+app2();
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -12,29 +28,43 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.get("/", function(req, res){
+app.get("/", function (req, res) {
   res.render("index");
 });
-app.get("/patient", function(req, res){
-    res.render("patient");
-  });
-  app.post("/patient", function(req, res){
-    res.redirect("patient");
-  });
-  app.get("/page", function(req, res){
-    res.render("page-one");
-  });
-  app.get("/page2", function(req, res){
-    ///res.redirect('/payment')
-  });
-  app.get('/here', function (req, res) {
+app.get("/patient", function (req, res) {
+  res.render("patient");
+});
+app.post("/patient", function (req, res) {
+  res.redirect("patient");
+});
+app.get("/page", async function (req, res) {
+
+  res.render('page-one')
+});
+app.get("/page-one", async function (req, res) {
+  const get_Patients = 'select * from patient_info';
+  const Patients = await db.all(get_Patients);
+  console.log(Patients);
+  res.render('page-one', {
+    Patients
+  })
+});
+app.get("/page2", function (req, res) {
+  res.render('page-two')
+});
+
+app.get('/here', function (req, res) {
   res.render('signup')
 })
 app.get('/pay', function (req, res) {
   res.render('payment')
 })
-  // Handle the appointment form submission
-app.post('/medication1', function (req, res) {
+app.post("/medication1", function (req, res) {
+  res.render('payment')
+  res.redirect("payment");
+});
+// Handle the appointment form submission
+app.post('/appointment', async function (req, res) {
   var formBody = {
     'name': req.body.first,
     'surname': req.body.last,
@@ -46,19 +76,27 @@ app.post('/medication1', function (req, res) {
     'date': req.body.date
 
   };
-
+  console.log(db)
   console.log(formBody);
+  const result = await db.run(
+    'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason) VALUES (?,?,?,?,?)',
+    req.body.id,
+    req.body.first,
+    req.body.last,
+    req.body.telNo,
+    req.body.reason
+  )
 
   res.render('page-one', {
     formBody,
-   
+
   });
 });
-  
+
 
 
 let PORT = process.env.PORT || 3007;
 
-app.listen(PORT, function(){
+app.listen(PORT, function () {
   console.log('App starting on port', PORT);
 });
