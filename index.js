@@ -31,6 +31,14 @@ app.use(express.static('public'));
 app.get("/", function (req, res) {
   res.render("index");
 });
+app.post("/patient", function (req, res) {
+  var login= {
+    'user':req.body.username,
+    'code' :req.body.passcode
+  }
+  console.log(login)
+});
+
 app.get("/patient", function (req, res) {
   res.render("patient");
 });
@@ -43,14 +51,7 @@ app.get("/page", async function (req, res) {
   console.log(Patients);
   res.render('page-one')
 });
-// app.get("/page-one", async function (req, res) {
-//   const get_Patients = 'select * from patient_info';
-//   const Patients = await db.all(get_Patients);
-//   console.log(Patients);
-//   res.render('page-one', {
-//     Patients
-//   })
-//});
+
 app.get("/page2", function (req, res) {
   res.render('page-two')
 });
