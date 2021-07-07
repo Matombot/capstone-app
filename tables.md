@@ -7,6 +7,10 @@ CREATE TABLE patient_info(
     reason text not null
 
 );
+CREATE TABLE Medication_info(
+    id integer primary key,
+    medication_name  text
+);
 
 CREATE TABLE medical_history(
     id integer primary key,

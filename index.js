@@ -13,12 +13,18 @@ async function app2() {
     driver: sqlite3.Database
   });
   await db.migrate();
-  //const get_regNum = await db.all('select * from provinces');
-  //console.log('Registration numbers : ');
-  // console.log(get_regNum);
-
 }
 app2();
+let db1;
+async function app1() {
+
+  db1 = await open({
+    filename: 'Medications-info.db',
+    driver: sqlite3.Database
+  });
+  await db1.migrate();
+}
+app1();
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -51,8 +57,15 @@ app.get("/page", async function (req, res) {
   console.log(Patients);
   res.render('page-one')
 });
+<<<<<<< HEAD
 
 app.get("/page2", function (req, res) {
+=======
+app.get("/page2", async function (req, res) {
+  const get_meds = 'select * from medication_info';
+  const MEDS = await db1.all(get_meds);
+  console.log(MEDS);
+>>>>>>> 59a7484834f790ac07f0d1784c2fa71ea84d310a
   res.render('page-two')
 });
 
@@ -62,8 +75,12 @@ app.get('/here', function (req, res) {
 app.get('/pay', function (req, res) {
   res.render('payment')
 })
-app.post("/medication1", function (req, res) {
-  res.render('payment')
+app.post("/medication1",async function (req, res) {
+  const result = await db1.run(
+    'INSERT INTO medication_info (medication_name) VALUES (?)',
+   console.log(req.body.selectMedication)
+  )
+  res.render('page-two')
   res.redirect("payment");
 });
 // Handle the appointment form submission
