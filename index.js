@@ -25,6 +25,7 @@ app.get("/patient", function(req, res){
     res.render("page-one");
   });
   app.get("/page2", function(req, res){
+    ///res.redirect('/payment')
   });
   app.get('/here', function (req, res) {
   res.render('signup')
