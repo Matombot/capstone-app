@@ -38,17 +38,17 @@ app.post("/patient", function (req, res) {
   res.redirect("patient");
 });
 app.get("/page", async function (req, res) {
-
-  res.render('page-one')
-});
-app.get("/page-one", async function (req, res) {
   const get_Patients = 'select * from patient_info';
   const Patients = await db.all(get_Patients);
   console.log(Patients);
-  res.render('page-one', {
-    Patients
-  })
+  res.render('page-one')
 });
+//app.get("/page-one", async function (req, res) {
+ // const get_Patients = 'select * from patient_info';
+ // const Patients = await db.all(get_Patients);
+ // console.log(Patients);
+ // res.render('page-one')
+//});
 app.get("/page2", function (req, res) {
   res.render('page-two')
 });
@@ -77,14 +77,14 @@ app.post('/appointment', async function (req, res) {
 
   };
   console.log(db)
-  console.log(formBody);
+  //console.log(formBody);
   const result = await db.run(
     'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason) VALUES (?,?,?,?,?)',
-    req.body.id,
-    req.body.first,
-    req.body.last,
-    req.body.telNo,
-    req.body.reason
+    console.log(req.body.id),
+    console.log(req.body.first),
+    console.log(req.body.last),
+    console.log(req.body.telNo),
+    console.log(req.body.reason)
   )
 
   res.render('page-one', {
