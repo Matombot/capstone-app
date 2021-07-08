@@ -8,7 +8,7 @@
 
         <form action="/appointment" method="POST">
         <label for="select department">select department</label>
-            <select name="select department" id="department">
+            <select name="select-department" id="department"  value="{{formBody.select-department}}" onchange="getSelectValue()";>
                 <option value="DENTAL">DENTAL</option>
                 <option value="PULMONARY">PULMONARY</option>
                 <option value="CARDIOLOGY">CARDIOLOGY</option>

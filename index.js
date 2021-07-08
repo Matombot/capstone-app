@@ -15,18 +15,21 @@ async function app2() {
   await db.migrate();
 }
 app2();
-let db1;
-async function app1() {
+// let db1;
+// async function app1() {
 
-  db1 = await open({
-    filename: 'Medications-info.db',
-    driver: sqlite3.Database
-  });
-  await db1.migrate();
-}
-app1();
+//   db1 = await open({
+//     filename: 'Medications-info.db',
+//     driver: sqlite3.Database
+//   });
+//   await db1.migrate();
+// }
+// app1();
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({
+   partialsDir:"./views/partials",
+viewPath:"./views",
+layoutsDir:"./views/layouts" }));
 app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -59,7 +62,7 @@ app.get("/page", async function (req, res) {
 });
 app.get("/medication1", async function (req, res) {
   const get_meds = 'select * from medication_info';
-  const MEDS = await db1.all(get_meds);
+  const MEDS = await db.all(get_meds);
   console.log(MEDS);
   res.render('page-two')
 });
@@ -71,7 +74,7 @@ app.get('/pay', function (req, res) {
   res.render('payment')
 })
 app.post("/medication1",async function (req, res) {
-  const result = await db1.run(
+  const result = await db.run(
     'INSERT INTO medication_info (medication_name) VALUES (?)',
    req.body.selectMedication
   )
@@ -81,6 +84,7 @@ app.post("/medication1",async function (req, res) {
 // Handle the appointment form submission
 app.post('/appointment', async function (req, res) {
   var formBody = {
+    
     'name': req.body.first,
     'surname': req.body.last,
     'ID': req.body.id,
