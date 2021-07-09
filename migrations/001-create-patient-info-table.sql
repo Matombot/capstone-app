@@ -4,5 +4,7 @@ CREATE TABLE patient_info(
     patient_name  text,
     patient_lastName text,
     contact_no text,
-    reason text
+    reason text,
+    allergy text not null,
+    first_time_visit text
 );

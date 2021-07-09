@@ -5,11 +5,13 @@
     <form action="/pay" method="post">
         <div>
         <label for="EFT"> EFT</label>
-        <input type="radio">
+        <input type="radio" name="money">
         <label for="card">CARD</label>
-        <input type="radio">
+        <input type="radio" name="money"> 
         <label for="insurance">INSURANCE</label>
-        <input type="radio">
+        <input type="radio" name="money">
+        <br>
+        <button type="reset">reset</button>
         <button type="submit">Pay</button>
     </div>
     </form>

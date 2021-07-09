@@ -67,7 +67,7 @@ app.get("/medication1", async function (req, res) {
   res.render('page-two')
 });
 
-app.get('/here', function (req, res) {
+app.get('/signup', function (req, res) {
   res.render('signup')
 })
 app.get('/pay', function (req, res) {
@@ -83,6 +83,7 @@ app.post("/medication1",async function (req, res) {
 });
 // Handle the appointment form submission
 app.post('/appointment', async function (req, res) {
+
   var formBody = {
     
     'name': req.body.first,
@@ -92,18 +93,24 @@ app.post('/appointment', async function (req, res) {
     'contact': req.body.telNo,
     'Reason': req.body.reason,
     'time': req.body.time,
-    'date': req.body.date
+    'date': req.body.date,
+    'allergy':req.body.appointment,
+    'visit': req.body.yes
 
   };
   console.log(db)
   //console.log(formBody);
   const result = await db.run(
-    'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason) VALUES (?,?,?,?,?)',
+    'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason,allergy,first_time_visit) VALUES (?,?,?,?,?,?,?)',
     req.body.id,
     req.body.first,
     req.body.last,
     req.body.telNo,
-    req.body.reason
+    req.body.reason,
+    req.body.appointment,
+    req.body.yes
+
+
   )
 
   res.render('page-one', {

@@ -31,12 +31,12 @@
             </div>
             <div>
                 <label>ID Number</label>
-                <input type="number" placeholder="Enter ID number" name="id" value="{{formBody.id}}">
+                <input type="number" placeholder="Enter ID number" name="id" maxlength="13" size="25" value="{{formBody.id}}">
             </div>
             <div>
                 <div>
                     <label>Tel</label>
-                    <input type="tel" name="telNo" {{formBody.telNo}}>
+                    <input type="tel" name="telNo" maxlength="10"  size="25" value="{{formBody.telNo}}">
                 </div>
                 <div>
                     <label>Email</label>
@@ -48,11 +48,11 @@
 
                 <br>
                 <label>Yes</label>
-                <input type="radio" id="yes" name="yes" value="{{formBody.yes}}">
+                <input type="radio"  name="yes" value="yes">
                 <br>
 
                 <label>No</label>
-                <input type="radio" id="no" name="no" value="{{formBody.no}}">
+                <input type="radio"  name="yes"  value="no">
 
 
             </div>
@@ -95,11 +95,14 @@
             
             <div>
                 <h4>Allergies?</h4>
+                <div>
                 <label>Yes</label>
-                <input type="radio" name="" id="">
+                <input type="radio" name="appointment" value="yes" >
                 <br>
                 <label>No</label>
-                <input type="radio" name="" id="">
+                <input type="radio" name="appointment" value="no">
+                </div>
+
                 <h4>If yes</h4>
                 <label>Specify</label>
                 <input type="text">
