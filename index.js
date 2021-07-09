@@ -3,7 +3,8 @@ const sqlite3 = require('sqlite3');
 const {open} = require('sqlite');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-
+const flash = require('express-flash');
+const session = require('express-session');
 let app = express();
 let db;
 async function app2() {
@@ -12,20 +13,18 @@ async function app2() {
     filename: 'Patient-info.db',
     driver: sqlite3.Database
   });
+  await db.exec('PRAGMA foreign_keys = ON;');
   await db.migrate();
 }
 app2();
-// let db1;
-// async function app1() {
+//function totalMeds(){
+ // let price =0;
+ // let totalPrice =0;
+ // function buy(medication1){
+   // totalPrice += (price *medication1)
 
-//   db1 = await open({
-//     filename: 'Medications-info.db',
-//     driver: sqlite3.Database
-//   });
-//   await db1.migrate();
-// }
-// app1();
-
+//  }
+//}
 app.engine('handlebars', exphbs({
    partialsDir:"./views/partials",
 viewPath:"./views",
@@ -80,6 +79,21 @@ app.post("/medication1",async function (req, res) {
   )
   console.log(req.body.selectMedication)
   res.redirect("/pay");
+});
+app.get("/doctor",async function (req, res) {
+  const get_info = 'select * from doctors_info1';
+  const inforPatients = await db.all(get_info);
+  console.log(inforPatients);
+  res.render("doctor");
+});
+app.post('/page-one', async function(req, res){
+  const result = await db.run(
+    'INSERT INTO doctors_info1(patient_info_id,Medication_info_id,medical_history_id) VALUES (?,?,?)',
+    req.body.patient_info_id,
+    req.body.Medication_info_id,
+    req.body.medical_history_id
+  )
+  res.redirect('doctor');
 });
 // Handle the appointment form submission
 app.post('/appointment', async function (req, res) {
