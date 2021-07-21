@@ -7,10 +7,10 @@
         <div>
             <form action="/patient" method="POST">
                 <label for="Username">Username:</label>
-              <input type="email" placeholder="username" name="username" value="{{formBody.username}}" required>
+              <input type="email" placeholder="username" name="username" value="{{login.username}}" required>
               <br><br>
               <label>Password:</label>
-                <input type="password" placeholder="password" name="passcode" value="{{formBody.passcode}}" required>
+                <input type="password" placeholder="password" name="passcode" value="{{login.passcode}}" required>
                 <br><br>
                 <button class="Login" type="submit" name="LOGIN">login</button>
             </form>

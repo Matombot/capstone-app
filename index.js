@@ -44,13 +44,10 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.get("/", function (req, res) {
-  // let greeting = "Hello";
-  //   if (req.session.username) {
-  //       greeting += (", " + req.session.username);
-  //   }
+
     
   res.render("index");
-   //res.send(greeting);
+  
 });
 
 app.get("/patient", function (req, res) {
@@ -73,7 +70,7 @@ app.post("/patient", function (req, res) {
   
   res.redirect("/patient");
 });
-app.get("/page", async function (req, res) {
+app.get("/appointment", async function (req, res) {
   const get_Patients = 'select * from patient_info';
   const Patients = await db.all(get_Patients);
   console.log(Patients);
@@ -134,7 +131,7 @@ app.post('/appointment', async function (req, res) {
 
   };
   console.log(db)
-  console.log(formBody);
+  //console.log(formBody);
   const result = await db.run(
     'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason,allergy,first_time_visit,symptoms) VALUES (?,?,?,?,?,?,?,?)',
     req.body.id,
@@ -153,6 +150,7 @@ app.post('/appointment', async function (req, res) {
     formBody,
 
   });
+  res.redirect('/pay')
 });
 
 
