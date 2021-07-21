@@ -5,8 +5,8 @@ CREATE TABLE patient_info(
     patient_lastName text not null,
     contact_no text not null,
     reason text not null,
-    allergy text not null,
-    first_time_visit text not null
+    first_time_visit text not null,
+    symptoms object not null 
 
 );
 CREATE TABLE Medication_info(

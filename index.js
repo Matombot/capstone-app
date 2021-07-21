@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3');
 const {open} = require('sqlite');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const flash = require('express-flash');
+//const flash = require('express-flash')
 const session = require('express-session');
 let app = express();
 let db;
@@ -30,6 +30,13 @@ app.engine('handlebars', exphbs({
 viewPath:"./views",
 layoutsDir:"./views/layouts" }));
 app.set('view engine', 'handlebars');
+//session middleware
+app.use(session({
+  secret: 'welcome back!!!',
+  cookie: { maxAge: 3000 },
+  resave: true,
+    saveUninitialized: true
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
@@ -37,21 +44,34 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.get("/", function (req, res) {
+  // let greeting = "Hello";
+  //   if (req.session.username) {
+  //       greeting += (", " + req.session.username);
+  //   }
+    
   res.render("index");
-});
-app.post("/patient", function (req, res) {
-  var login= {
-    'user':req.body.username,
-    'code' :req.body.passcode
-  }
-  console.log(login)
+   //res.send(greeting);
 });
 
 app.get("/patient", function (req, res) {
+  const currentUsername = req.query.username;
+    // req.session will be defined now
+    if (currentUsername && !req.session.username){
+        //set a session value from a form variable
+        req.session.username = currentUsername;
+    }
+    //res.redirect('/');
   res.render("patient");
 });
+
 app.post("/patient", function (req, res) {
-  res.redirect("patient");
+  
+  var login= {
+        'user':req.body.username,
+      }
+    console.log(login)
+  
+  res.redirect("/patient");
 });
 app.get("/page", async function (req, res) {
   const get_Patients = 'select * from patient_info';
@@ -109,20 +129,22 @@ app.post('/appointment', async function (req, res) {
     'time': req.body.time,
     'date': req.body.date,
     'allergy':req.body.appointment,
-    'visit': req.body.yes
+    'visit': req.body.yes,
+    'symptoms':req.body.symp
 
   };
   console.log(db)
-  //console.log(formBody);
+  console.log(formBody);
   const result = await db.run(
-    'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason,allergy,first_time_visit) VALUES (?,?,?,?,?,?,?)',
+    'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason,allergy,first_time_visit,symptoms) VALUES (?,?,?,?,?,?,?,?)',
     req.body.id,
     req.body.first,
     req.body.last,
     req.body.telNo,
     req.body.reason,
     req.body.appointment,
-    req.body.yes
+    req.body.yes,
+    req.body.symp
 
 
   )

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <p class="nancy">NANCY SMITH <img src="pictures/icon.jpeg" width="25"></p>
-        <a href="index.handlebars" ><button type="submit">LOGOUT</button></a>
+        <a href="/" ><button type="submit">LOGOUT</button></a>
         <h1>GIPT-HEALTH* </h1>
         <img src="pictures/logo.jpeg" width="10" height="10">
         <p>BOOK APPOINTMENT</p>
@@ -31,12 +31,12 @@
             </div>
             <div>
                 <label>ID Number</label>
-                <input type="number" placeholder="Enter ID number" name="id" maxlength="13" size="25" value="{{formBody.id}}">
+                <input type="text" placeholder="Enter ID number" pattern="^\d{13}$" name="id" minlength="13" maxlength="13" value="{{formBody.id}}" required="required">
             </div>
             <div>
                 <div>
                     <label>Tel</label>
-                    <input type="tel" name="telNo" maxlength="10"  size="25" value="{{formBody.telNo}}">
+                    <input type="tel" name="telNo" pattern="^\d{10}$"  value="{{formBody.telNo}}" required="reqired">
                 </div>
                 <div>
                     <label>Email</label>
@@ -68,25 +68,25 @@
                     Select Symptoms
                     <br>
                     <label>Coughing</label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="symp" value="Coughing" >
                     <br>
                     <label>Sneezing</label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="symp" value="sneezing" >
                     <br>
                     <label>Sore Throat</label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="symp" value="sore throat" >
                     <br>
                     <label>Headache</label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="symp" value="Headache" > 
                     <br>
                     <label>Backache</label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="symp" value="backache" >
                     <br>
                     <label>Muscle Pain</label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="symp" value="Muscle pain" >
                     <br>
                     <label>Diarrhea</label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="symp" value="diarrhea" >
                     <br>
                 </div>
             </div>
