@@ -153,7 +153,11 @@ app.post('/appointment', async function (req, res) {
   res.redirect('/pay')
 });
 
+app.post('/logout', (req, res)=>{
 
+alert("Thank you!")
+res.redirect('/patient')
+})
 
 let PORT = process.env.PORT || 3007;
 

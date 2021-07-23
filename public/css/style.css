@@ -14,3 +14,6 @@ footer{
     background-repeat: no-repeat;
     background-size: 1rem 1rem;
   }
+  .land{
+      align-content: center !important;
+  }

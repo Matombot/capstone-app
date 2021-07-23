@@ -1,14 +1,16 @@
 <div class="container">
-    <div class="row">
+    <div class="row form-group mx-sm-3 mb-2">
         <p class="nancy">NANCY SMITH <img src="pictures/icon.jpeg" width="25"></p>
-        <a href="/" ><button type="submit">LOGOUT</button></a>
-        <h1>GIPT-HEALTH* </h1>
-        <img src="pictures/logo.jpeg" width="100px" >
+        <a href="/"><button type="submit">LOGOUT</button></a>
+        <!--<h1>GIPT-HEALTH* </h1>-->
+        <!--<img src="pictures/logo.jpeg" width="100px" >-->
         <p>BOOK APPOINTMENT</p>
 
         <form action="/appointment" method="POST">
-        <label for="select department">select department</label>
-            <select name="select-department" id="department"  value="{{formBody.select-department}}" onchange="getSelectValue()";>
+            <label for="select department">Select Department</label>
+            <div class="form-group">
+                <select class="form-control" name="select-department" id="department" value="{{formBody.select-department}}"
+                onchange="getSelectValue()" ;>
                 <option value="DENTAL">DENTAL</option>
                 <option value="PULMONARY">PULMONARY</option>
                 <option value="CARDIOLOGY">CARDIOLOGY</option>
@@ -18,113 +20,126 @@
                 <option value="PEDIATRIC">PEDIATRIC</option>
                 <option value="DIAGNOSTICS">DIAGNOSTICS</option>
             </select>
-            <div class="names">
-                <div>
-                    <label>Name</label>
-                    <input type"text" name="first" placeholder="enter firstname" value="{{formBody.first}}">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="col-sm-2 col-form-label">Name</label>
+                    <input type"text" name="first" placeholder="enter firstname" class="form-control"
+                        value="{{formBody.first}}" width="">
                 </div>
-                <div>
-                    <label>Surname</label>
-                    <input type="text" name="last" placeholder="enter lastname" value="{{formBody.last}}">
+                <div class="col">
+                    <label class="col-sm-2 col-form-label">Surname</label>
+                    <input type="text" name="last" placeholder="enter lastname" class="form-control"
+                        value="{{formBody.last}}">
                 </div>
 
             </div>
             <div>
-                <label>ID Number</label>
-                <input type="text" placeholder="Enter ID number" pattern="^\d{13}$" name="id" minlength="13" maxlength="13" value="{{formBody.id}}" required="required">
+                <label class="col-sm-2 col-form-label">ID Number</label>
+                <input type="text" placeholder="Enter id number" pattern="^\d{13}$" name="id" minlength="13"
+                    maxlength="13" class="form-control  d-inline" width=" 30%" value="{{formBody.id}}" required="required">
             </div>
             <div>
                 <div>
-                    <label>Tel</label>
-                    <input type="tel" name="telNo" pattern="^\d{10}$"  value="{{formBody.telNo}}" required="reqired">
+                    <label class="col-sm-2 col-form-label">Tel</label>
+                    <input type="tel" name="telNo" pattern="^\d{10}$" class="form-control  d-inline"
+                        value="{{formBody.telNo}}" required="reqired">
                 </div>
                 <div>
-                    <label>Email</label>
-                    <input type="email" name="email" value="{{formBody.email}}">
+                    <label class="col-sm-2 col-form-label">Email</label>
+                    <input type="email" name="email" class="form-control " value="{{formBody.email}}">
                 </div>
             </div>
             <div>
-                First time visit?
-
+                <h4>First time visit?</h4>
                 <br>
-                <label>Yes</label>
-                <input type="radio"  name="yes" value="yes">
+                
+                <input type="radio" name="yes" value="yes" class="form-check-input">
+                <label class="form-check-label">Yes</label>
                 <br>
-
-                <label>No</label>
-                <input type="radio"  name="yes"  value="no">
-
+                
+                <input type="radio" name="yes" value="no" class="form-check-input">
+                <label class="form-check-label">No</label>
 
             </div>
 
             <div>
-                <label>Reason</label>
+                <label class="col-sm-2 col-form-label">Reason</label>
                 <textarea type="text" placeholder="reason for visit..." name="reason"
-                    value="{{formBody.reason}}"></textarea>
+                    class="form-control form-control-lg" value="{{formBody.reason}}"></textarea>
                 <br>
-                Select Schedule suitable for you.
+                <h4>Select Schedule suitable for you.</h4>
                 <br>
-                <div>
-                    Select Symptoms
+                <h5>Select Symptoms</h5>
+                <div class="form-check form-check-inline">
+
+
+                    <input class="form-check-input" type="checkbox" name="symp" value="Coughing">
+                    <label class="form-check-label">Coughing</label>
                     <br>
-                    <label>Coughing</label>
-                    <input type="checkbox" name="symp" value="Coughing" >
+                    <input class="form-check-input" type="checkbox" name="symp" value="Coughing">
+                    <label class="form-check-label">Sneezing</label>
+
                     <br>
-                    <label>Sneezing</label>
-                    <input type="checkbox" name="symp" value="sneezing" >
+                    <input class="form-check-input" type="checkbox" name="symp" value="Coughing">
+                    <label class="form-check-label">Sore Throat</label>
+
                     <br>
-                    <label>Sore Throat</label>
-                    <input type="checkbox" name="symp" value="sore throat" >
-                    <br>
+                    <input class="form-check-input" type="checkbox" name="symp" value="Coughing">
                     <label>Headache</label>
-                    <input type="checkbox" name="symp" value="Headache" > 
+
                     <br>
+                    <input class="form-check-input" type="checkbox" name="symp" value="Coughing">
                     <label>Backache</label>
-                    <input type="checkbox" name="symp" value="backache" >
                     <br>
+                    <input class="form-check-input" type="checkbox" name="symp" value="Coughing">
                     <label>Muscle Pain</label>
-                    <input type="checkbox" name="symp" value="Muscle pain" >
                     <br>
+                    <input class="form-check-input" type="checkbox" name="symp" value="Coughing">
                     <label>Diarrhea</label>
-                    <input type="checkbox" name="symp" value="diarrhea" >
+
                     <br>
                 </div>
             </div>
-            
-               
-            
+
+
+
             <div>
                 <h4>Allergies?</h4>
                 <div>
-                <label>Yes</label>
-                <input type="radio" name="appointment" value="yes" >
-                <br>
-                <label>No</label>
-                <input type="radio" name="appointment" value="no">
+                    <input type="radio" name="appointment" value="yes" class="form-check-input">
+                    <label>Yes</label>
+
+                    <br>
+                    <input type="radio" name="appointment" value="yes" class="form-check-input">
+                    <label>No</label>
+
                 </div>
 
                 <h4>If yes</h4>
                 <label>Specify</label>
-                <input type="text">
+                <input class="form-control" type="text">
 
             </div>
             <div>
-                <label>Select Time</label>
-                <input type="time" name="time" value="{{formBody.time}}">
+                <label class="col-sm-2 col-form-label">Select Time</label>
+                <input class="form-control" type="time" name="time" value="{{formBody.time}}">
             </div>
             <div>
-                <label>Select Date</label>
-                <input type="date" name="date" value="{{formBody.date}}">
+                <label class="col-sm-2 col-form-label">Select Date</label>
+                <input class="form-control" type="date" name="date" value="{{formBody.date}}">
             </div>
 
 
     </div>
 </div>
-            <button class="SUBMIT APPOINTMENT" name="SUBMIT APPOINTMENT" type="submit">SUBMIT APPOINTMENT</button>
-        </form>
-        <div>
-           Did you know: COVID-19 is mainly transmitted through droplets generated when an infected person coughs, sneezes, or exhales. 
-        </div>
-    </div>
+<br>
+<button class="btn btn-danger mb-2 form-control" name="SUBMIT APPOINTMENT" type="submit">SUBMIT APPOINTMENT</button>
+</form>
+<div>
+    Did you know: COVID-19 is mainly transmitted through droplets generated when an infected person coughs, sneezes, or
+    exhales.
+</div>
+</div>
 
 </div>

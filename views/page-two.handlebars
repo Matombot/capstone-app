@@ -2,18 +2,18 @@
     <div class="row">
         <p class="nancy">NANCY SMITH <img src="pictures/icon.jpeg" width="25"></p>
         <p class="logout">LOGOUT</p>
-        <h1>GIPT-HEALTH* </h1>
-        <img src="pictures/logo.jpeg" width="100px">
+        <!--<h1>GIPT-HEALTH* </h1>
+        <img src="pictures/logo.jpeg" width="100px">-->
         <p>BOOK MEDICATION DELIVERY </p>
         <div "col-xs-12 col-sm-6 col-md-4 col-lg-2">
             EMAIL ADDRESS:<input type="text" placeholder="">
         </div>
-        <div "col-xs-12 col-sm-6 col-md-4 col-lg-2">
-            <button class="rep-order" name="REPEAT PRESCRIPTION ORDER" type="reset">REPEAT PRESCRIPTION ORDER</button>
+        <div >
+            <button  class=" rep-order btn btn-danger" name="REPEAT PRESCRIPTION ORDER" type="reset">REPEAT PRESCRIPTION ORDER</button>
         </div>
-        <form action="/medication1" method="POST">
+        <form class="form-inline" action="/medication1" method="POST">
             <label for="ORDER MEDICATION">ORDER MEDICATION</label>
-            <select name="selectMedication" id="MEDICATION" onchange="getSelectValue()";>
+            <select class="form-control" name="selectMedication" id="MEDICATION" onchange="getSelectValue()";>
                 <option value="ACARBOSE"  selected="selected">ACARBOSE</option>
                 <option value="ACCOLATE">ACCOLATE</option>
                 <option value="AMLODIPINE">AMLODIPINE</option>
@@ -23,26 +23,27 @@
                 <option value="PIOGLITAZONE">PIOGLITAZONE</option>
                 <option value="PLAQUENIL">PLAQUENIL</option>
             </select>
+            
             <div>
 
-                <div "col-xs-12 col-sm-6 col-md-4 col-lg-2"> 
+                <div > 
                     
-                    <label>Collect</label>
-                    <input type="radio" name="order">
-                    <label>Delivery</label>
-                    <input type="radio" name="order">
+                    <label  class="form-check-label">Collect</label>
+                    <input  class="form-check-input" type="radio" name="order">
+                    <label  class="form-check-label">Delivery</label>
+                    <input  class="form-check-input" type="radio" name="order">
                 
                 </div>
                 <div>
 
-                    <div "col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                    <div >
                         <label>Select Date </label>
 
                         <input type="datetime-local">
                     </div>
                 </div>
             </div>
-            <button class="ORDER MEDICATION" name="MEDICATION" type="submit">ORDER MEDICATION</button>
+            <button class="ORDER MEDICATION btn btn-danger" name="MEDICATION" type="submit">ORDER MEDICATION</button>
         </form>
         <div>
             *free delivery for purchases above R300
