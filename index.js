@@ -1,8 +1,10 @@
+var https= require("https")
 let express = require('express');
 const sqlite3 = require('sqlite3');
 const {open} = require('sqlite');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+//var Vacation = require('./vacation.js');
 //const flash = require('express-flash')
 const session = require('express-session');
 let app = express();
@@ -45,7 +47,11 @@ app.use(express.static('public'));
 
 app.get("/", function (req, res) {
 
-    
+  // if(req.headers['x-forwarded-proto']==='https') {
+  //   res.send('line is secure');
+  //   } else {
+  //   res.send('you are insecure!');
+  //   }
   res.render("index");
   
 });
@@ -158,9 +164,29 @@ app.post('/logout', (req, res)=>{
 alert("Thank you!")
 res.redirect('/patient')
 })
+// app.get('/vacations', function(req, res){
+//   Vacation.find({ available: true }, function(err, vacations){
+//   var context = {
+//   vacations: vacations.map(function(vacation){
+//   //Database Persistence | 151
+//   return {
+//   sku: vacation.sku,
+//   name: vacation.name,
+//   description: vacation.description,
+//   price: vacation.getDisplayPrice(),
+//   inSeason: vacation.inSeason,
+//   }
+//   })
+//   };
+//   res.render('vacations', context);
+//   });
+//   });
 
 let PORT = process.env.PORT || 3007;
-
+// https.createServer(options, app).listen(app.get('port'), function(){
+//   console.log('Express started in ' + app.get('env') +
+//   ' mode on port ' + app.get('port') + '.');
+//   });
 app.listen(PORT, function () {
   console.log('App starting on port', PORT);
 });
