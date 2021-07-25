@@ -1,15 +1,14 @@
 <div class="container">
     <div class="row">
-        <!--<h1>GIPT-HEALTH* </h1>
-        <img src="pictures/logo.jpeg" width="100px">-->
+
         <h2>MAKE PAYMENTS</h2>
 
         <h3>Choose payment method</h3>
-        <form action="/pay" method="post">
+        <form class="justify-content-center form-inline" action="/pay" method="post">
             <div>
                 <label class="form-check-label" for="EFT"> EFT</label>
                 <input class="form-check-input" type="radio" name="money">
-                <label class="form-check-label" for="card">CARD</label>
+                <label class="form-check-label glyphicon glyphicon-credit-card" for="card">CARD</label>
                 <input class="form-check-input" type="radio" name="money">
                 <label class="form-check-label" for="insurance">INSURANCE</label>
                 <input class="form-check-input" type="radio" name="money">
@@ -17,12 +16,13 @@
                 <br>
                 <div class="form-control" id="" name="" value="">
                     Total: <span>R0.00</span></div>
-                <br>
+                <br><br>
                 <button class="form-control mb-4 btn btn-danger" type="reset">reset</button>
-                <button class=" form-control mb-12 btn btn-danger " type="submit">Pay</button>
-                
+
+                <button class=" form-control mb-4 btn btn-danger " type="submit">Pay</button>
+
             </div>
-            
+
 
         </form>
     </div>

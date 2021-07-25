@@ -1,10 +1,7 @@
 <div class="container">
-    <p class="nancy"> <img src="pictures/icon.jpeg" width="25"></p>
-    <p class="logout">LOGOUT</p>
-    <!--<h1>GIPT-HEALTH* </h1>
-    <img src="pictures/logo.jpeg" width="100"> -->
+   
     <h4>PLEASE FILL IN DETAILS!</h4>
-    <form action="/here" method="">
+    <form class="form-inline" action="/here" method="">
         <div class="names">
             <div>
                 <label>Name</label>
@@ -47,20 +44,20 @@
                     <label for="inputCity">Surburb</label>
                     <input type="text" class="form-control" id="inputCity">
                 </div>
-                <div class="form-group col-auto col-md-4">
+                <div class="form-group ">
                     <label for="inputState">City</label>
                     <select id="inputState" class="form-control">
                         <option>Choose...</option>
                         <option>Johannesburg</option>
                     </select>
                 </div>
-                <div class="form-group col-auto col-md-2">
+                <div class="form-group ">
                     <label for="inputZip">Zip</label>
                     <input type="text" class="form-control" id="inputZip">
                 </div>
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group ">
                 <label for="">Add Medical insurance</label>
                 <br>
                 <input class="form-control" type="text" name="medical" placeholder="Enter Insurance ID">
@@ -141,7 +138,11 @@
 
         </div>
         <br>
-        <div><button class="btn btn-danger mb-6" type="submit" name="btn">Save</button></div>
+        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+        
+        <div>
+            <button type="submit" class="cancelbtn btn btn-danger ">Cancel</button>
+            <button class="btn btn-danger mb-6" type="submit" name="btn">Save</button></div>
 
     </form>
 

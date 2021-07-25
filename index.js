@@ -159,34 +159,15 @@ app.post('/appointment', async function (req, res) {
   res.redirect('/pay')
 });
 
-app.post('/logout', (req, res)=>{
+app.delete('/logout', (req, res)=>{
 
 alert("Thank you!")
 res.redirect('/patient')
 })
-// app.get('/vacations', function(req, res){
-//   Vacation.find({ available: true }, function(err, vacations){
-//   var context = {
-//   vacations: vacations.map(function(vacation){
-//   //Database Persistence | 151
-//   return {
-//   sku: vacation.sku,
-//   name: vacation.name,
-//   description: vacation.description,
-//   price: vacation.getDisplayPrice(),
-//   inSeason: vacation.inSeason,
-//   }
-//   })
-//   };
-//   res.render('vacations', context);
-//   });
-//   });
+  
 
 let PORT = process.env.PORT || 3007;
-// https.createServer(options, app).listen(app.get('port'), function(){
-//   console.log('Express started in ' + app.get('env') +
-//   ' mode on port ' + app.get('port') + '.');
-//   });
+
 app.listen(PORT, function () {
   console.log('App starting on port', PORT);
 });
