@@ -77,7 +77,7 @@ app.post("/patient", function (req, res) {
     
     console.log(user)
   
-  //res.redirect("/patient");
+  res.redirect("/patient");
 });
 app.get("/appointment", async function (req, res) {
   const get_Patients = 'select * from patient_info';
@@ -139,7 +139,7 @@ app.post('/appointment', async function (req, res) {
     
   };
   console.log(db)
-  //console.log(formBody);
+  console.log(formBody);
   const result = await db.run(
     'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason,allergy,first_time_visit) VALUES (?,?,?,?,?,?,?)',
     req.body.id,
