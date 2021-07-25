@@ -1,10 +1,9 @@
-// var https= require("https")
+
 let express = require('express');
 const sqlite3 = require('sqlite3');
 const {open} = require('sqlite');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-//var Vacation = require('./vacation.js');
 //const flash = require('express-flash')
 const session = require('express-session');
 let app = express();
@@ -46,15 +45,19 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.get("/", function (req, res) {
+  res.render('home')
 
   // if(req.headers['x-forwarded-proto']==='https') {
   //   res.send('line is secure');
   //   } else {
   //   res.send('you are insecure!');
   //   }
-  res.render("index");
+  // res.render("index");
   
 });
+app.get('/login', (req,res)=>{
+  res.render('index');
+})
 
 app.get("/patient", function (req, res) {
   const currentUsername = req.query.username;
@@ -63,18 +66,18 @@ app.get("/patient", function (req, res) {
         //set a session value from a form variable
         req.session.username = currentUsername;
     }
-    //res.redirect('/');
+    
   res.render("patient");
 });
 
 app.post("/patient", function (req, res) {
   
-  var login= {
-        'user':req.body.username,
-      }
-    console.log(login)
+
+          const user={'user':req.body.username}
+    
+    console.log(user)
   
-  res.redirect("/patient");
+  //res.redirect("/patient");
 });
 app.get("/appointment", async function (req, res) {
   const get_Patients = 'select * from patient_info';
@@ -109,7 +112,7 @@ app.get("/doctor",async function (req, res) {
   console.log(inforPatients);
   res.render("doctor");
 });
-app.post('/page-one', async function(req, res){
+app.post('/doctor', async function(req, res){
   const result = await db.run(
     'INSERT INTO doctors_info1(patient_info_id,Medication_info_id,medical_history_id) VALUES (?,?,?)',
     req.body.patient_info_id,
@@ -132,37 +135,33 @@ app.post('/appointment', async function (req, res) {
     'time': req.body.time,
     'date': req.body.date,
     'allergy':req.body.appointment,
-    'visit': req.body.yes,
-    'symptoms':req.body.symp
-
+    'visit': req.body.yes
+    
   };
   console.log(db)
   //console.log(formBody);
   const result = await db.run(
-    'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason,allergy,first_time_visit,symptoms) VALUES (?,?,?,?,?,?,?,?)',
+    'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason,allergy,first_time_visit) VALUES (?,?,?,?,?,?,?)',
     req.body.id,
     req.body.first,
     req.body.last,
     req.body.telNo,
     req.body.reason,
     req.body.appointment,
-    req.body.yes,
-    req.body.symp
+    req.body.yes
+    
 
 
   )
 
-  res.render('page-one', {
-    formBody,
-
-  });
+  
   res.redirect('/pay')
 });
 
-app.delete('/logout', (req, res)=>{
+app.get('/logout', (req, res)=>{
 
-alert("Thank you!")
-res.redirect('/patient')
+
+res.redirect('/')
 })
   
 

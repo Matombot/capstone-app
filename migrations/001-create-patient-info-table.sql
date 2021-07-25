@@ -6,6 +6,6 @@ CREATE TABLE patient_info(
     contact_no text,
     reason text,
     allergy text not null,
-    first_time_visit text,
-    symptoms  object
+    first_time_visit text
+    
 );
