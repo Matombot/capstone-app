@@ -35,6 +35,20 @@ footer{
     background-size: cover !important;
     position: relative !important;
   }
+  .bg-image {
+    /* The image used */
+   
+    background-image: url("  https://www.ti.com/content/dam/ticom/images/themes/medical/healthcare-on-smartphone-dm5780.jpg") !important;
+  
+    /* Control the height of the image */
+    min-height:700px !important;
+  
+    /* Center and scale the image nicely */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    position: relative !important;
+  }
   
   /* .input-group{
     display: inline;
