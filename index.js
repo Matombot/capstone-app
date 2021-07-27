@@ -26,6 +26,7 @@ app2();
 
 //  }
 //}
+const appointmentList = [];
 app.engine('handlebars', exphbs({
    partialsDir:"./views/partials",
 viewPath:"./views",
@@ -106,19 +107,16 @@ app.post("/medication1",async function (req, res) {
   console.log(req.body.selectMedication)
   res.redirect("/pay");
 });
-app.get("/doctor",async function (req, res) {
-  const binList = [
-    {},
-    {},
-    {}
-  ]
-  // later this - change the list to come from the database...
+app.get("/doctor", async function (req, res) {
+ 
+  
   const appointment = await db.all('select * from patient_info')
+  console.log(appointment);
   
   // const get_info = 'select * from doctors_info1';
   // const inforPatients = await db.all(get_info);
-  console.log(appointment);
-  res.render("doctor",{bins :binList});
+  
+  res.render("doctor",{formBody :appointmentList});
 });
 app.post('/doctor', async function(req, res){
  
@@ -161,9 +159,9 @@ app.post('/appointment', async function (req, res) {
     req.body.appointment,
     req.body.yes
 
-  )
+  );
 
-  
+  appointmentList.push({ })
   res.redirect('/pay')
 });
 
