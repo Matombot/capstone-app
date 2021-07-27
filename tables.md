@@ -21,14 +21,13 @@ CREATE TABLE medical_history(
     allergies text not null
 );
 
-CREATE TABLE location(
+create TABLE doctor(
     id integer primary key,
-    id_number integer not null,
-    street_no integer not null,
-    street_name text not null,
-    city text not null,
-    surburb text,
-    postal_code integer not null
+    last_name interger not null,
+    email email,
+    shift_type text,
+    rate text
+
 );
 create TABLE doctors_info1(
     id integer primary key,
