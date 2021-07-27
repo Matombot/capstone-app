@@ -26,7 +26,7 @@
                 <div>
                     <label class="col-sm-2 col-form-label">Name</label>
                     <input type"text" name="first" placeholder="enter firstname" class="form-control"
-                        value="{{formBody.first}}" width="">
+                        value="{{formfirst}}" width="">
                 </div>
                 <div>
                     <label class="col-sm-2 col-form-label">Surname</label>
@@ -112,21 +112,15 @@
 <br>
 <button class="btn btn-danger mb-2 form-control" name="SUBMIT APPOINTMENT" type="submit">SUBMIT APPOINTMENT</button>
 </form>
-<ul>
-    {{#each formBody}}
+<table>
+    {{#each idnumber}}
 <div>
-     <li>{{id}}</li>
-    <li>{{first}}</li>
-    <li>{{last}}</li>
-    <li>{{telNo}}</li>
-     <li>{{reason}}</li>
-      <li>{{appointment}}</li>
-       <li>{{ yes}}</li>
+     {{appointments}}
         
 </div>
 {{/each}}
 <div>
-</ul>
+</table>
     Did you know: COVID-19 is mainly transmitted through droplets generated when an infected person coughs, sneezes, or
     exhales.
 </div>

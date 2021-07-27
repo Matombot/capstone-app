@@ -86,6 +86,14 @@ app.get("/appointment", async function (req, res) {
   console.log(Patients);
   res.render('page-one')
 });
+app.get("/appointment/:id_number", async function (req, res) {
+  const idNum= req.query.id_number
+  const get_idNum = 'select * from patient_info where id_number=?';
+  const idNums = await db.all(get_idNum, idNum);
+  console.log(idNums);
+  res.render('page-one',{idnumber
+  })
+});
 app.get("/medication1", async function (req, res) {
   const get_meds = 'select * from medication_info';
   const MEDS = await db.all(get_meds);
@@ -96,9 +104,12 @@ app.get("/medication1", async function (req, res) {
 app.get('/signup', function (req, res) {
   res.render('signup')
 })
+
+
 app.get('/pay', function (req, res) {
   res.render('payment')
 })
+
 app.post("/medication1",async function (req, res) {
   const result = await db.run(
     'INSERT INTO medication_info (medication_name) VALUES (?)',
@@ -107,17 +118,19 @@ app.post("/medication1",async function (req, res) {
   console.log(req.body.selectMedication)
   res.redirect("/pay");
 });
+
 app.get("/doctor", async function (req, res) {
  
   
-  const appointment = await db.all('select * from patient_info')
-  console.log(appointment);
+  const appointments = await db.all('select * from patient_info')
+  console.log(appointments);
   
   // const get_info = 'select * from doctors_info1';
   // const inforPatients = await db.all(get_info);
   
-  res.render("doctor",{formBody :appointmentList});
+  res.render("doctor",{appointments});
 });
+
 app.post('/doctor', async function(req, res){
  
   var search=req.body.search
@@ -148,7 +161,7 @@ app.post('/appointment', async function (req, res) {
     
   };
   console.log(db)
-  console.log(formBody);
+  //console.log(formBody);
   const result = await db.run(
     'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason,allergy,first_time_visit) VALUES (?,?,?,?,?,?,?)',
     req.body.id,
