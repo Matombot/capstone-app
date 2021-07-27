@@ -54,3 +54,33 @@ footer{
     display: inline;
     
   } */
+  .home-1{
+    padding: 1em !important;
+    color: rgb(80, 80, 145) !important;
+  }
+  .home-2 {
+      display:flex !important;
+  }
+ .mission {
+     padding: 1em !important;
+     color: rgb(80, 80, 145) !important;
+     width: 50% !important;
+
+
+ } 
+ .side-bar {
+    padding: 1em !important ;
+     color: rgb(80, 80, 145) !important;
+     width: 50% !important;
+ } 
+ .office{
+    padding: 1em !important ;
+    color: honeydew !important;
+}  
+.giphy{
+  float: right !important;
+  width: 50% !important;
+}
+.main-12 {
+  float: left;
+}
