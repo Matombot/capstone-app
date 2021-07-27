@@ -113,12 +113,15 @@ app.get("/doctor",async function (req, res) {
   res.render("doctor");
 });
 app.post('/doctor', async function(req, res){
-  const result = await db.run(
-    'INSERT INTO doctors_info1(patient_info_id,Medication_info_id,medical_history_id) VALUES (?,?,?)',
-    req.body.patient_info_id,
-    req.body.Medication_info_id,
-    req.body.medical_history_id
-  )
+  const dBase=[];
+  var search=req.body.search
+  console.log(search)
+  // const result = await db.run(
+  //   'INSERT INTO doctors_info1(patient_info_id,Medication_info_id,medical_history_id) VALUES (?,?,?)',
+  //   req.body.patient_info_id,
+  //   req.body.Medication_info_id,
+  //   req.body.medical_history_id
+  // )
   res.redirect('doctor');
 });
 // Handle the appointment form submission
