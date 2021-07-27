@@ -107,13 +107,21 @@ app.post("/medication1",async function (req, res) {
   res.redirect("/pay");
 });
 app.get("/doctor",async function (req, res) {
-  const get_info = 'select * from doctors_info1';
-  const inforPatients = await db.all(get_info);
-  console.log(inforPatients);
-  res.render("doctor");
+  const binList = [
+    {},
+    {},
+    {}
+  ]
+  // later this - change the list to come from the database...
+  const appointment = await db.all('select * from patient_info')
+  
+  // const get_info = 'select * from doctors_info1';
+  // const inforPatients = await db.all(get_info);
+  console.log(appointment);
+  res.render("doctor",{bins :binList});
 });
 app.post('/doctor', async function(req, res){
-  const dBase=[];
+ 
   var search=req.body.search
   console.log(search)
   // const result = await db.run(

@@ -1,41 +1,45 @@
 <div class="container">
     <div class=" form-group mx-sm-3 mb-2">
-        
-        <p><h4>BOOK APPOINTMENT</h4></p>
+
+        <p>
+        <h4>BOOK APPOINTMENT</h4>
+        </p>
 
         <form class="form-inline" action="/appointment" method="POST">
             <label for="select department">Select Department</label>
             <div class="form-group ">
-                <select class="form-control" name="select-department" id="department" value="{{formBody.select-department}}"
-                onchange="getSelectValue()" ;>
-                <option value="DENTAL">DENTAL</option>
-                <option value="PULMONARY">PULMONARY</option>
-                <option value="CARDIOLOGY">CARDIOLOGY</option>
-                <option value="OPHTALMOLOGY">OPHTALMOLOGY</option>
-                <option value="NEUROLOGY">NEUROLOGY</option>
-                <option value="TRAUMATOLOGY">TRAUMATOLOGY</option>
-                <option value="PEDIATRIC">PEDIATRIC</option>
-                <option value="DIAGNOSTICS">DIAGNOSTICS</option>
-            </select>
+                <select class="form-control" name="select-department" id="department"
+                    value="{{formBody.select-department}}" onchange="getSelectValue()" ;>
+                    <option value="DENTAL">DENTAL</option>
+                    <option value="PULMONARY">PULMONARY</option>
+                    <option value="CARDIOLOGY">CARDIOLOGY</option>
+                    <option value="OPHTALMOLOGY">OPHTALMOLOGY</option>
+                    <option value="NEUROLOGY">NEUROLOGY</option>
+                    <option value="TRAUMATOLOGY">TRAUMATOLOGY</option>
+                    <option value="PEDIATRIC">PEDIATRIC</option>
+                    <option value="DIAGNOSTICS">DIAGNOSTICS</option>
+                </select>
             </div>
-            
+
             <div>
-                <div >
+
+                <div>
                     <label class="col-sm-2 col-form-label">Name</label>
                     <input type"text" name="first" placeholder="enter firstname" class="form-control"
                         value="{{formBody.first}}" width="">
                 </div>
-                <div  >
+                <div>
                     <label class="col-sm-2 col-form-label">Surname</label>
-                    <input type="text" name="last" placeholder="enter lastname" class=" input-group input-group form-control"
-                        value="{{formBody.last}}">
+                    <input type="text" name="last" placeholder="enter lastname"
+                        class=" input-group input-group form-control" value="{{formBody.last}}">
                 </div>
 
             </div>
             <div>
                 <label class="col-sm-2 col-form-label">ID Number</label>
                 <input type="text" placeholder="Enter id number" pattern="^\d{13}$" name="id" minlength="13"
-                    maxlength="13" class="form-control  d-inline input-group input-group" width=" 30%" value="{{formBody.id}}" required="required">
+                    maxlength="13" class="form-control  d-inline input-group input-group" width=" 30%"
+                    value="{{formBody.id}}" required="required">
             </div>
             <div>
                 <div>
@@ -52,11 +56,11 @@
             <div>
                 <h4>First time visit?</h4>
                 <br>
-                
+
                 <input type="radio" name="yes" value="yes" class="form-check-input">
                 <label class="form-check-label">Yes</label>
                 <br>
-                
+
                 <input type="radio" name="yes" value="no" class="form-check-input">
                 <label class="form-check-label">No</label>
 
@@ -67,8 +71,8 @@
                 <textarea type="text" placeholder="reason for visit..." name="reason"
                     class="form-control form-control-lg" value="{{formBody.reason}}"></textarea>
                 <br>
-                
-                
+
+
             </div>
 
 
@@ -103,16 +107,23 @@
 
 
     </div>
+
 </div>
 <br>
 <button class="btn btn-danger mb-2 form-control" name="SUBMIT APPOINTMENT" type="submit">SUBMIT APPOINTMENT</button>
 </form>
+{{#each bins }}
+<div>
+    {{formBody}}
+</div>
+{{/each}}
 <div>
     Did you know: COVID-19 is mainly transmitted through droplets generated when an infected person coughs, sneezes, or
     exhales.
 </div>
 </div>
- <!-- Appy Chatbot widget, Paste the code in the <body> section -->
-<script id="appyWidgetInit" src="https://chatbot.appypie.com/widget/loadbuild.js?cid=60fd23e61e60e03263dcf59b-60fd23e61e60e03263dcf59b-BOTID1627202574310&name=mixBuild"></script>
+<!-- Appy Chatbot widget, Paste the code in the <body> section -->
+<script id="appyWidgetInit"
+    src="https://chatbot.appypie.com/widget/loadbuild.js?cid=60fd23e61e60e03263dcf59b-60fd23e61e60e03263dcf59b-BOTID1627202574310&name=mixBuild"></script>
 <!-- /. End Appy chatbot widget code -->
 </div>

@@ -1,22 +1,6 @@
 <div class="container">
     <div class="row">
 
-        <!-- <form action="/patient" method="POST">
-
-            <h4> Login</h4>
-                     <label for="Username">Username:</label>
-                        <input type="email" placeholder="username" name="username" value="{{login.username}}" required>
-                        <br><br>
-                        <label>Password:</label>
-                        <input type="password" placeholder="password" name="passcode" value="{{login.passcode}}"
-                            required>
-                        <br><br>
-                        <button class="Login" type="submit" name="LOGIN">login</button> 
-                    </form> -->
-
-    </div>
-    <!--<p>DONT HAVE AN ACCOUNT? SIGN UP <a href="/signup"><button class="here" name="HERE">HERE</button></a>
-                </p> -->
     <div>
         <form class="needs-validation" action="/patient" method="POST">
             <section class="vh-100">
@@ -26,28 +10,10 @@
                             <img src="https://www.ti.com/content/dam/ticom/images/themes/medical/healthcare-on-smartphone-dm5780.jpg"
                                 class="img-fluid" alt="Sample image">
                         </div>
-                        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 d-inline">
                             <form>
-                                <div
-                                    class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                                    <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-                                    <button type="button" class="btn btn-light btn-floating mx-1">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </button>
-
-                                    <button type="button" class="btn btn-light btn-floating mx-1">
-                                        <i class="fab fa-twitter"></i>
-                                    </button>
-
-                                    <button type="button" class="btn btn-light btn-floating mx-1">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </button>
-                                </div>
-
-                                <div class="divider d-flex align-items-center my-4">
-                                    <p class="text-center fw-bold mx-3 mb-0">Or</p>
-                                </div>
-                                <br>
+                                
+                        
                                 <!-- Email input -->
                                 <div class="form-outline mb-2 ">
                                     <input type="email" id="" class="form-control form-control-lg"
@@ -87,17 +53,10 @@
                         </div>
                     </div>
                 </div>
-                <div class=" flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-danger"
-                    width="100%">
-                    <!-- Copyright -->
-                    <div class="text-white mb-3 mb-md-0">
-                        Copyright © 2021 gipt-health. All rights reserved.
-                        {{!-- www.gipt-health.co.za --}}
-                    </div>
-                    <!-- Copyright -->
+                
 
                     <!-- Right -->
-                    <div>
+                    {{!-- <div>
                         <a href="#!" class="text-white me-4">
                             <i class="fab fa-facebook-f"></i>
                         </a>
@@ -111,20 +70,18 @@
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
-                    <!-- Right -->
+                    <!-- Right --> --}}
                 </div>
             </section>
-            <!-- <label for="employeename">EmployeeName:</label>
-                        <input type="text" placeholder="EmployeeName" name="employeeName" required>
-                        <br><br>
-                        <label for="password">Password:</label>
-                        <input type="password" placeholder="Password">
-                        <br><br>
-                        <button class="login" type="submit" name="login">Login</button> -->
+            
         </form>
 
     </div>
-
+<form action="/doctor">
+     <label for="employeename">EmployeeName:</label>
+                        
+    <a href="/doctor"><button class="login" type="submit" name="login">Login</button> --></a>
+</form>
 </div>
 </div>
 {{!-- <form action="/logout" method="POST">
