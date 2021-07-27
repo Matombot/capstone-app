@@ -1,4 +1,35 @@
+<div>
+    {{patient.first_name}}
+</div>
+<div>
+   
+<h2>Make booking</h2>
 
+
+<form action="/appointment" method="post" >
+
+	<input type="hidden" name="patient_id" value="{{patient.id}}">
+    <input type="hidden" name="id_number" value="{{patient.id_number}}">
+
+	<div><select name="slot_type">
+		<option value="" disabled selected>Select your option</option>
+		<option>morning</option>
+        <option>morning</option>
+
+	</select></div>
+
+    <div>
+        <textarea name="reason" ></textarea>
+    </div>
+
+	<input type="submit" value="Make booking">
+</form>
+
+
+<h2>Previous bookings</h2>
+
+
+</div>
 <table class="table">
     {{#each idNums }}
 <tr>

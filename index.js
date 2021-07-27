@@ -88,16 +88,28 @@ app.get("/appointment", async function (req, res) {
 });
 app.get("/appointment/:id_number", async function (req, res) {
   const idNum= req.params.id_number
-  const get_idNum = 'select * from patient_info where id_number=?';
-  const idNums = await db.all(get_idNum, idNum);
-  console.log(idNum);
-  res.render('patient_appointments',{idNums})
+  const get_idNum = 'select * from patients where id_number=?';
+  const patient = await db.get(get_idNum, idNum);
+  // console.log(idNum);
+  res.render('patient_appointments',{patient})
 });
 app.get("/medication1", async function (req, res) {
   const get_meds = 'select * from medication_info';
   const MEDS = await db.all(get_meds);
   console.log(MEDS);
   res.render('page-two')
+});
+app.get("/doctors", async function (req, res) {
+  const get_doctors = 'select * from doctors';
+  const doctors = await db.all(get_doctors);
+  //console.log(MEDS);
+  res.render('doctors',{doctors})
+});
+app.get("/patients", async function (req, res) {
+  const get_patients = 'select * from patients';
+  const patients = await db.all(get_patients);
+  //console.log(MEDS);
+  res.render('patients', {patients})
 });
 
 app.get('/signup', function (req, res) {
@@ -134,47 +146,52 @@ app.post('/doctor', async function(req, res){
  
   var search=req.body.search
   console.log(search)
-  // const result = await db.run(
-  //   'INSERT INTO doctors_info1(patient_info_id,Medication_info_id,medical_history_id) VALUES (?,?,?)',
-  //   req.body.patient_info_id,
-  //   req.body.Medication_info_id,
-  //   req.body.medical_history_id
+  
   // )
   res.redirect('doctor');
 });
+
 // Handle the appointment form submission
 app.post('/appointment', async function (req, res) {
+  console.log(req.body)
+  res.redirect('/appointment/' + req.body.id_number)
 
-  var formBody = {
+  const slot= await db.get('select * from doctors where slot_type=?', req.body.slot_type)
+  console.log(slot)
+  const booking= await db.run('insert into appointment (reason,status,slot_type) values(?,?,?)',req.body.date,
+  req.body.reason,)
+
+res.render('appointment_made')
+  // var formBody = {
     
-    'name': req.body.first,
-    'surname': req.body.last,
-    'ID': req.body.id,
-    'email': req.body.email,
-    'contact': req.body.telNo,
-    'Reason': req.body.reason,
-    'time': req.body.time,
-    'date': req.body.date,
-    'allergy':req.body.appointment,
-    'visit': req.body.yes
+  //   'name': req.body.first,
+  //   'surname': req.body.last,
+  //   'ID': req.body.id,
+  //   'email': req.body.email,
+  //   'contact': req.body.telNo,
+  //   'Reason': req.body.reason,
+  //   'time': req.body.time,
+  //   'date': req.body.date,
+  //   'allergy':req.body.appointment,
+  //   'visit': req.body.yes
     
-  };
-  console.log(db)
+  // };
+  // console.log(db)
   //console.log(formBody);
-  const result = await db.run(
-    'INSERT INTO patient_info (id_number,patient_name,patient_lastName,contact_no,reason,allergy,first_time_visit) VALUES (?,?,?,?,?,?,?)',
-    req.body.id,
-    req.body.first,
-    req.body.last,
-    req.body.telNo,
-    req.body.reason,
-    req.body.appointment,
-    req.body.yes
+//   const result = await db.run(
+//     'INSERT INTO appointment (id_number,first_name,last_name,contact_no,reason,allergy,first_time_visit) VALUES (?,?,?,?,?,?,?)',
+//     req.body.id,
+//     req.body.first,
+//     req.body.last,
+//     req.body.telNo,
+//     req.body.reason,
+//     req.body.appointment,
+//     req.body.yes
 
-  );
+//   );
 
-  appointmentList.push({ })
-  res.redirect('/pay')
+//   appointmentList.push({ })
+//   res.redirect('/pay')
 });
 
 app.get('/logout', (req, res)=>{
