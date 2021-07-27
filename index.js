@@ -87,12 +87,11 @@ app.get("/appointment", async function (req, res) {
   res.render('page-one')
 });
 app.get("/appointment/:id_number", async function (req, res) {
-  const idNum= req.query.id_number
+  const idNum= req.params.id_number
   const get_idNum = 'select * from patient_info where id_number=?';
   const idNums = await db.all(get_idNum, idNum);
-  console.log(idNums);
-  res.render('page-one',{idnumber
-  })
+  console.log(idNum);
+  res.render('patient_appointments',{idNums})
 });
 app.get("/medication1", async function (req, res) {
   const get_meds = 'select * from medication_info';
