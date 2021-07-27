@@ -152,8 +152,6 @@ app.post('/appointment', async function (req, res) {
     req.body.reason,
     req.body.appointment,
     req.body.yes
-    
-
 
   )
 
