@@ -72,11 +72,11 @@ app.get("/appointment", async function (req, res) {
 });
 app.get("/appointment/:id_number", async function (req, res) {
   const idNum= req.params.id_number
-  // const get_idNum = 'select * from patients where id_number=? union select * ';
-   const patient = 'select * from patients where id_number=? union select * from appointment where doctor_id=doctor_id ';
+  
+  const get_idNum = 'select * from appointment where id=doctor_id';
+  
 
-
-  const patient_app = await db.get(patient, idNum);
+  const patient = await db.get(get_idNum, idNum);
   // console.log(idNum);
   res.render('patient_appointments',{patient})
 });
