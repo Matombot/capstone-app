@@ -47,13 +47,6 @@ app.use(express.static('public'));
 
 app.get("/", function (req, res) {
   res.render('home')
-
-  // if(req.headers['x-forwarded-proto']==='https') {
-  //   res.send('line is secure');
-  //   } else {
-  //   res.send('you are insecure!');
-  //   }
-  // res.render("index");
   
 });
 app.get('/login', (req,res)=>{
@@ -61,21 +54,12 @@ app.get('/login', (req,res)=>{
 })
 
 app.get("/patient", function (req, res) {
-  const currentUsername = req.query.username;
-    // req.session will be defined now
-    if (currentUsername && !req.session.username){
-        //set a session value from a form variable
-        req.session.username = currentUsername;
-    }
     
   res.render("patient");
 });
 
 app.post("/patient", function (req, res) {
-  
-
-          const user={'user':req.body.username}
-    
+   const user={'user':req.body.username}
     console.log(user)
   
   res.redirect("/patient");
@@ -133,7 +117,7 @@ app.post("/medication1",async function (req, res) {
 app.get("/doctor", async function (req, res) {
  
   
-  const appointments = await db.all('select * from patient_info')
+  const appointments = await db.all('select * from patients')
   console.log(appointments);
   
   // const get_info = 'select * from doctors_info1';
@@ -142,14 +126,10 @@ app.get("/doctor", async function (req, res) {
   res.render("doctor",{appointments});
 });
 
-app.post('/doctor', async function(req, res){
+// app.post('/doctor', async function(req, res){
  
-  var search=req.body.search
-  console.log(search)
-  
-  // )
-  res.redirect('doctor');
-});
+//   res.redirect('doctor');
+// });
 
 // Handle the appointment form submission
 app.post('/appointment', async function (req, res) {
@@ -158,7 +138,7 @@ app.post('/appointment', async function (req, res) {
 
   const slot= await db.get('select * from doctors where slot_type=?', req.body.slot_type)
   console.log(slot)
-  const booking= await db.run('insert into appointment (reason,status,slot_type) values(?,?,?)',req.body.date,
+  const booking= await db.run('insert into appointment (reason,status,slot_type) values(?,?,?)',req.body.slot_type,
   req.body.reason,)
 
 res.render('appointment_made')

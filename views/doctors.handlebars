@@ -1,13 +1,19 @@
-<h1>doctors info</h1>
+<h1>DOCTORS</h1>
 <table class="table">
-    {{#each doctors}}
-  
   <tr>
-      <td>{{first_name}}</td>
-       <td>{{last_name}}</td>
-        <td>{{email}}</td>
-         <td>{{shift_type}}</td>
-          <td>{{rate}}</td>
+    <th>First_name</th>
+    <th>Last_name</th>
+    <th>Email</th>
+    <th>Shift_type</th>
+    <th>Rate</th>
   </tr>
-{{/each}}
+  {{#each doctors}}
+  <tr>
+    <td>{{first_name}}</td>
+    <td>{{last_name}}</td>
+    <td>{{email}}</td>
+    <td>{{shift_type}}</td>
+    <td>{{rate}}</td>
+  </tr>
+  {{/each}}
 </table>
