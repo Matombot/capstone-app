@@ -72,8 +72,11 @@ app.get("/appointment", async function (req, res) {
 });
 app.get("/appointment/:id_number", async function (req, res) {
   const idNum= req.params.id_number
-  const get_idNum = 'select * from patients where id_number=?';
-  const patient = await db.get(get_idNum, idNum);
+  // const get_idNum = 'select * from patients where id_number=? union select * ';
+   const patient = 'select * from patients where id_number=? union select * from appointment where doctor_id=doctor_id ';
+
+
+  const patient_app = await db.get(patient, idNum);
   // console.log(idNum);
   res.render('patient_appointments',{patient})
 });
@@ -136,10 +139,10 @@ app.post('/appointment', async function (req, res) {
   console.log(req.body)
   res.redirect('/appointment/' + req.body.id_number)
 
-  const slot= await db.get('select * from doctors where slot_type=?', req.body.slot_type)
-  console.log(slot)
-  const booking= await db.run('insert into appointment (reason,status,slot_type) values(?,?,?)',req.body.slot_type,
-  req.body.reason,)
+  const doctor= await db.get('select * from doctors where slot_type=?', req.body.slot_type)
+  // console.log(slot)
+  const booking= await db.run('insert into appointment (reason,status,slot_type,patient_id,doctor_id) values(?,"Booked",?,?,?)',req.body.reason,
+  req.body.status, req.body.slot_type,req.body.patient_id,doctor.id)
 
 res.render('appointment_made')
   // var formBody = {
