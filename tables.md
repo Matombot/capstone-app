@@ -27,7 +27,6 @@ create TABLE doctor(
     email email,
     shift_type text,
     rate text
-
 );
 create TABLE doctors_info1(
     id integer primary key,
