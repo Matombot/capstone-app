@@ -9,7 +9,9 @@
   </tr>
   {{#each doctors}}
   <tr>
-    <td>{{first_name}}</td>
+    <td>
+      <a href="/doctor/{{id}}">{{first_name}}</a>
+      </td>
     <td>{{last_name}}</td>
     <td>{{email}}</td>
     <td>{{slot_type}}</td>
