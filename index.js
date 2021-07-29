@@ -61,28 +61,16 @@ app.post("/options", function (req, res) {
 app.get("/appointment/:id_number", async function (req, res) {
   const idNum = req.params.id_number
 
-<<<<<<< HEAD
-  //const get_idNum = 'select * from patients where id_number=?';
-  //const patient = await db.get(get_idNum, idNum);
-=======
   const get_idNum = 'select * from patients where id_number=?';
   const patient = await db.get(get_idNum, idNum);
->>>>>>> 37691422b1e36a07ccaac5c5e63a2f55c7fa9c68
   const get_appointment1 = `select * from appointment
    inner join doctors on doctors.id=appointment.id
    where patient_id=?`;
 
-<<<<<<< HEAD
-  const get_appointments = await db.all(get_appointment1,idNum);
-  console.log(get_appointments);
-  // console.log(idNum);
-  res.render('patient_appointments', { get_appointment})
-=======
   const get_appointments = await db.all(get_appointment1,patient.id);
   console.log(get_appointments);
    console.log(idNum);
   res.render('patient_appointments', {patient,get_appointments})
->>>>>>> 37691422b1e36a07ccaac5c5e63a2f55c7fa9c68
 });
 
 app.get("/doctor/:id", async function (req, res) {
@@ -161,11 +149,7 @@ app.post('/appointment', async function (req, res) {
   const booking = await db.run('insert into appointment (reason,status,slot_type,patient_id,doctor_id) values(?,"Booked",?,?,?)', req.body.reason,
     req.body.slot_type, req.body.patient_id, doctor.id)
 
-<<<<<<< HEAD
-  res.render('appointment_made', { booking });
-=======
   res.render('appointment_made', { booking,doctor });
->>>>>>> 37691422b1e36a07ccaac5c5e63a2f55c7fa9c68
 
 });
 
