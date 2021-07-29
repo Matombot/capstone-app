@@ -24,10 +24,10 @@
             </select></div>
 
         <div>
-            <textarea name="reason"></textarea>
+            <textarea class="form-control" name="reason"></textarea>
         </div>
 
-        <input type="submit" value="Make booking">
+        <input class="btn btn-danger" type="submit" value="Make booking">
     </form>
 
 
@@ -36,10 +36,23 @@
 
 </div>
 <table class="table">
+    <tr>
+      <th>Doctor</th>
+      <th>reason</th>
+      <th>status</th>
+      <th>slot_type</th>
+      <th>rate</th>
+
+
+    </tr>
     {{#each get_appointments}}
     <tr>
-        <td>{{id}}</td>
-        <td>{{first_name}}</td>
+        
+        <td>Dr {{first_name}} {{last_name}}</td>
+        <td>{{reason}}</td>
+        <td>{{status}}</td>
+        <td>{{slot_type}}</td>
+        <td>{{rate}}</td>
     </tr>
     {{/each}}
 </table>

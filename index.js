@@ -74,7 +74,9 @@ app.get("/appointment/:id_number", async function (req, res) {
 });
 
 app.get("/doctor/:id", async function (req, res) {
-  const idNumbs = req.params.id
+  const idNumbs = req.params.id;
+const doc = 'select * from doctors where id=?';
+const doctor = await db.get (doc,idNumbs);
 
   const get_doctor = `select * from appointment
    inner join patients on patients.id=appointment.id
@@ -83,7 +85,7 @@ app.get("/doctor/:id", async function (req, res) {
   const all_appointments = await db.all(get_doctor, idNumbs);
   console.log(all_appointments);
 
-  res.render('doctor_appointments', { all_appointments })
+  res.render('doctor_appointments', { all_appointments,doctor })
 });
 app.get("/medication1", async function (req, res) {
   const get_meds = 'select * from medication_info';

@@ -1,21 +1,27 @@
 <h4>doctor's appointments</h4>
 <div>
-     {{doctor.first_name}}
+  <strong>DR {{doctor.first_name}} {{doctor.last_name}}</strong>
 </div>
+<br>
+
 <div>
   <table class="table">
-     
+    <tr>
+      <th>first_name</th>
+      <th>Reason</th>
+      <th>status</th>
+      <th>slot_type</th>
+    </tr>
     {{#each all_appointments}}
     <tr>
       <td>{{first_name}} {{last_name}} </td>
       <td>{{reason}}</td>
       <td>{{status}}</td>
       <td>{{slot_type}}</td>
-      
+
 
 
     </tr>
     {{/each}}
   </table>
 </div>
-  
