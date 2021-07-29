@@ -1,55 +1,54 @@
 <div>
-    {{patient.first_name}}
+    {{patient.first_name  }} {{patient.last_name}}
 </div>
 <div>
-   
-<h2>Make booking</h2>
+
+</div>
+<div>
+
+    <h2>Make booking</h2>
 
 
-<form action="/appointment" method="post" >
+    <form action="/appointment" method="post">
 
-	<input type="hidden" name="patient_id" value="{{patient.id}}">
-    <input type="hidden" name="id_number" value="{{patient.id_number}}">
-    
-
-	<div><select name="slot_type">
-		<option value="" disabled selected>Select your option</option>
-		<option>morning</option>
-        <option>midday</option>
-        <option>evening</option>
-
-	</select></div>
-
-    <div>
-        <textarea name="reason" ></textarea>
-    </div>
-
-	<input type="submit" value="Make booking">
-</form>
+        <input type="hidden" name="patient_id" value="{{patient.id}}">
+        <input type="hidden" name="id_number" value="{{patient.id_number}}">
 
 
-<h2>Previous bookings</h2>
+        <div><select name="slot_type">
+                <option value="" disabled selected>Select your option</option>
+                <option>morning</option>
+                <option>midday</option>
+                <option>evening</option>
+
+            </select></div>
+
+        <div>
+            <textarea name="reason"></textarea>
+        </div>
+
+        <input type="submit" value="Make booking">
+    </form>
+
+
+    <h2>Previous bookings</h2>
 
 
 </div>
 <table class="table">
     {{#each get_appointments}}
-<tr>
-     <td>{{id}}</td>
-     <td>{{doctors.first_name}}</td>
-     
-     <td>{{reason}}</td>
-     <td>{{allergy}}</td>
-   
-
-</tr>
-{{/each}}
+    <tr>
+        <td>{{id}}</td>
+        <td>{{first_name}}</td>
+    </tr>
+    {{/each}}
 </table>
-    Did you know: COVID-19 is mainly transmitted through droplets generated when an infected person coughs, sneezes, or
-    exhales.
+Did you know: COVID-19 is mainly transmitted through droplets generated when an infected person coughs, sneezes, or
+exhales.
 </div>
 </div>
-{{!-- <!-- Appy Chatbot widget, Paste the code in the <body> section -->
+{{!--
+<!-- Appy Chatbot widget, Paste the code in the <body> section -->
 <script id="appyWidgetInit"
     src="https://chatbot.appypie.com/widget/loadbuild.js?cid=60fd23e61e60e03263dcf59b-60fd23e61e60e03263dcf59b-BOTID1627202574310&name=mixBuild"></script>
 <!-- /. End Appy chatbot widget code --> --}}
