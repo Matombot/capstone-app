@@ -70,7 +70,7 @@ app.get("/appointment/:id_number", async function (req, res) {
   const get_appointments = await db.all(get_appointment1,idNum);
   console.log(get_appointments);
   // console.log(idNum);
-  res.render('patient_appointments', { get_appointments})
+  res.render('patient_appointments', { get_appointment})
 });
 app.get("/doctor/:id", async function (req, res) {
   const idNumbs = req.params.id
