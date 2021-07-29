@@ -18,14 +18,6 @@ async function app2() {
   await db.migrate();
 }
 app2();
-//function totalMeds(){
-// let price =0;
-// let totalPrice =0;
-// function buy(medication1){
-// totalPrice += (price *medication1)
-
-//  }
-//}
 const appointmentList = [];
 app.engine('handlebars', exphbs({
   partialsDir: "./views/partials",
@@ -54,41 +46,43 @@ app.get('/login', (req, res) => {
   res.render('index');
 })
 
-app.get("/patient", function (req, res) {
+app.get("/options", function (req, res) {
 
-  res.render("patient");
+  res.render("options");
 });
 
-app.post("/patient", function (req, res) {
+app.post("/options", function (req, res) {
   const user = { 'user': req.body.username }
   console.log(user)
 
-  res.redirect("/patient");
+  res.redirect("/options");
 });
-//app.get("/appointment", async function (req, res) {
-//  const get_Patients = 'select * from patient_info';
-//  const Patients = await db.all(get_Patients);
-//  console.log(Patients);
-//  res.render('page-one')
-//});
 
 app.get("/appointment/:id_number", async function (req, res) {
   const idNum = req.params.id_number
 
-  const get_idNum = 'select * from patients where id_number=?';
+  //const get_idNum = 'select * from patients where id_number=?';
+  //const patient = await db.get(get_idNum, idNum);
+  const get_appointment1 = `select * from appointment
+   inner join doctors on doctors.id=appointment.id
+   where patient_id=?`;
 
-  const patient = await db.get(get_idNum, idNum);
+  const get_appointments = await db.all(get_appointment1,idNum);
+  console.log(get_appointments);
   // console.log(idNum);
-  res.render('patient_appointments', { patient })
+  res.render('patient_appointments', { get_appointments})
 });
 app.get("/doctor/:id", async function (req, res) {
   const idNumbs = req.params.id
 
-  const get_doctor = 'select * from doctors where id=?';
+  const get_doctor = `select * from appointment
+   inner join patients on patients.id=appointment.id
+   where doctor_id=?`;
 
-  const all_doctors = await db.get(get_doctor, idNumbs);
-  // console.log(all_doctors);
-  res.render('doctor_appointments', { all_doctors })
+  const all_appointments = await db.all(get_doctor, idNumbs);
+  console.log(all_appointments);
+
+  res.render('doctor_appointments', { all_appointments })
 });
 app.get("/medication1", async function (req, res) {
   const get_meds = 'select * from medication_info';
@@ -153,7 +147,6 @@ app.post('/appointment', async function (req, res) {
   console.log(doctor)
   const booking = await db.run('insert into appointment (reason,status,slot_type,patient_id,doctor_id) values(?,"Booked",?,?,?)', req.body.reason,
     req.body.slot_type, req.body.patient_id, doctor.id)
-
 
   res.render('appointment_made', { booking });
 

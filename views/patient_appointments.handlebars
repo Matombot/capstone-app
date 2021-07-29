@@ -33,12 +33,15 @@
 
 </div>
 <table class="table">
-    {{#each idNums }}
+    {{#each get_appointments}}
 <tr>
      <td>{{id}}</td>
+     <td>{{doctors.first_name}}</td>
+     
      <td>{{reason}}</td>
      <td>{{allergy}}</td>
-        
+   
+
 </tr>
 {{/each}}
 </table>

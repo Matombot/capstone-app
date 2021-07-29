@@ -3,7 +3,8 @@
     {{#each patients}}
 
     <tr>
-        <td>{{first_name}}</td>
+        <td>
+            <a href="/appointment/{{id_number}}">{{first_name}}</a></td>
         <td>{{last_name}}</td>
         <td>{{id_number}}</td>
         <td>{{contact_no}}</td>

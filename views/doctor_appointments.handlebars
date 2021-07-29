@@ -1,17 +1,18 @@
 <h4>doctor's appointments</h4>
 <div>
-     {{all_doctors.first_name}}
+     {{idNumbs.first_name}}
 </div>
 <div>
   <table class="table">
      
-    {{#each all_doctors}}
+    {{#each all_appointments}}
     <tr>
+      <td>{{first_name}} {{last_name}} </td>
       <td>{{reason}}</td>
-      <td>{{last_name}}</td>
-      <td>{{email}}</td>
+      <td>{{status}}</td>
       <td>{{slot_type}}</td>
-      <td>{{rate}}</td>
+      
+
 
     </tr>
     {{/each}}
