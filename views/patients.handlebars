@@ -1,10 +1,17 @@
 <h1>patients info</h1>
 <table class="table">
+    <tr>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>id_number</th>
+        <th>contact_no</th>
+    </tr>
     {{#each patients}}
 
     <tr>
         <td>
-            <a href="/appointment/{{id_number}}">{{first_name}}</a></td>
+            <a href="/appointment/{{id_number}}">{{first_name}}</a>
+        </td>
         <td>{{last_name}}</td>
         <td>{{id_number}}</td>
         <td>{{contact_no}}</td>
