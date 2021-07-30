@@ -1,12 +1,10 @@
 <div>
-    {{patient.first_name  }} {{patient.last_name}}
+    <strong>{{patient.first_name }} {{patient.last_name}}</strong>
 </div>
+<br>
 <div>
 
-</div>
-<div>
-
-    <h2>Make booking</h2>
+    <h2>MAKE BOOKING</h2>
 
 
     <form action="/appointment" method="post">
@@ -15,38 +13,39 @@
         <input type="hidden" name="id_number" value="{{patient.id_number}}">
 
 
-	<div><select name="slot_type">
-		<option value="" disabled selected>Select your option</option>
-		<option>morning </option>
-        <option>midday</option>
-        <option>evening</option>
+        <div><select class="btn btn-danger" name="slot_type">
+                <option value="" disabled selected>Select your option</option>
+                <option>morning </option>
+                <option>midday</option>
+                <option>evening</option>
 
             </select></div>
-
+        <br>
         <div>
-            <textarea class="form-control" name="reason"></textarea>
+            <label class="input-check-label">Reason:</label>
+            <textarea class="form-control" name="reason" placeholder="Enter reason eg:headache..."></textarea>
         </div>
-
+        <br>
         <input class="btn btn-danger" type="submit" value="Make booking">
     </form>
 
 
-    <h2>Previous bookings</h2>
+    <h2>PREVIOUS BOOKINGS</h2>
 
 
 </div>
 <table class="table">
     <tr>
-      <th>Doctor</th>
-      <th>status</th>
-      <th>slot_type</th>
-      <th>rate</th>
+        <th>Doctor</th>
+        <th>status</th>
+        <th>slot_type</th>
+        <th>rate</th>
 
 
     </tr>
     {{#each get_appointments}}
     <tr>
-        
+
         <td>Dr {{first_name}} {{last_name}}</td>
         <td>{{status}}</td>
         <td>{{slot_type}}</td>

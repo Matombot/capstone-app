@@ -1,13 +1,20 @@
 <h4>Thank you! for making an appointment with <strong> Dr {{doctor.first_name}} {{doctor.last_name}}</strong></h4>
+<div class="giphy">
+  <img src="https://media.giphy.com/media/5w2gaBgfZIVGyxsGjH/giphy.gif" class="img-fluid" alt="Sample image"
+    width="300px">
+</div>
+</div>
+
+</div>
 
 <div>
-  <button class="btn btn-danger" name="thanks" type="submit"> procced to payment</button>
+  <a href="/pay"><button class="btn btn-danger" name="thanks" type="submit"> proceed to payment</button></a>
 </div>
 <div>
   <table class="table">
-     
+
     {{#each booking}}
-    
+
     {{/each}}
   </table>
 </div>

@@ -69,7 +69,7 @@ app.get("/appointment/:id_number", async function (req, res) {
 
   const get_appointments = await db.all(get_appointment1,patient.id);
   console.log(get_appointments);
-   console.log(idNum);
+   //console.log(idNum);
   res.render('patient_appointments', {patient,get_appointments})
 });
 
@@ -124,17 +124,17 @@ app.post("/medication1", async function (req, res) {
   res.redirect("/pay");
 });
 
-app.get("/doctor", async function (req, res) {
+// app.get("/doctor", async function (req, res) {
 
 
-  const appointments = await db.all('select * from patients')
-  console.log(appointments);
+//   const appointments = await db.all('select * from patients')
+//   console.log(appointments);
 
-  // const get_info = 'select * from doctors_info1';
-  // const inforPatients = await db.all(get_info);
+//   // const get_info = 'select * from doctors_info1';
+//   // const inforPatients = await db.all(get_info);
 
-  res.render("doctor", { appointments });
-});
+//   res.render("doctor", { appointments });
+// });
 
 // app.post('/doctor', async function(req, res){
 

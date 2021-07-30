@@ -13,7 +13,7 @@
                             </div>
                             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 ">
 
-                                {{csrf}}
+                        
 
                                 <!-- Email input -->
                                 <div class="form-outline mb-2 ">
@@ -49,14 +49,19 @@
                                     <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/signup"
                                             class="link-danger">Signup!</a></p>
                                 </div>
+                            
+
+                            
 
                 </form>
 
-                <form action="/doctor">
-                    <label for="employeename col-sm-2 col-form-label">Employee:</label>
 
-                    <a href="/doctor"><button class="btn btn-danger btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" type="submit" name="login">Login</button></a>
-                </form>
+                <label for="employeename col-sm-2 col-form-label">Employee:</label>
+
+                <a href="/doctors"><button class="btn btn-danger btn-lg"
+                        style="padding-left: 2.5rem; padding-right: 2.5rem;" type="button"
+                        name="login">Login</button></a>
+
             </section>
         </div>
     </div>
